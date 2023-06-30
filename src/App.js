@@ -1,7 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+
 
 function App() {
+  const { proxy } = useSelector( state => state )
+
+  useEffect(() => {
+    const data = window.api.getData()
+    console.log(data)
+  }, [])
   return (
     <div className="App">
       <header className="App-header">
@@ -11,11 +20,10 @@ function App() {
         </p>
         <a
           className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
+          href={ proxy }        
           rel="noopener noreferrer"
         >
-          Learn React
+          { proxy }
         </a>
       </header>
     </div>
